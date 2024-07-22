@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="popup.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #content {
+      text-align: center;
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    input {
+      width: calc(100% - 22px);
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <h1>Settings</h1>
+    <label for="apiKey">OpenAI API Key:</label>
+    <input type="text" id="apiKey" placeholder="Enter your API key">
+    <button id="save-btn">Save</button>
+  </div>
+  <script src="settings.js"></script>
+</body>
+</html>

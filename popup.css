@@ -1,0 +1,61 @@
+body {
+  font-family: Arial, sans-serif;
+  width: 300px;
+  padding: 10px;
+}
+
+#content {
+  text-align: center;
+}
+
+#summary, #preview, #history {
+  margin-top: 10px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#summary p, #history p {
+  margin-bottom: 10px;
+}
+
+button {
+  margin: 5px;
+  padding: 5px 10px;
+}
+
+a {
+  display: block;
+  margin-top: 20px;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.history-item.expanded .summary {
+  white-space: normal;
+}
+
+.history-item .summary {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+
+.history-item .delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 2px 5px;
+  cursor: pointer;
+}
