@@ -13,7 +13,6 @@ document.getElementById('summarize-btn').addEventListener('click', async () => {
       },
       async (results) => {
         if (chrome.runtime.lastError || !results || !results[0]) {
-          console.error('Error executing script: ', chrome.runtime.lastError);
           document.getElementById('summary').innerText = 'Error: Unable to retrieve selected text.';
           return;
         }
@@ -38,7 +37,6 @@ document.getElementById('preview-btn').addEventListener('click', async () => {
       },
       async (results) => {
         if (chrome.runtime.lastError || !results || !results[0]) {
-          console.error('Error executing script: ', chrome.runtime.lastError);
           document.getElementById('preview').innerText = 'Error: Unable to retrieve selected text.';
           return;
         }
@@ -56,22 +54,24 @@ document.getElementById('clear-btn').addEventListener('click', () => {
   document.getElementById('preview').innerText = '';
 });
 
+// Function to get selected text on the page
 function getSelectedText() {
   return window.getSelection().toString();
 }
 
+// Function to get the full page content if no text is selected
 async function getFullPageContent(tabId) {
   const [result] = await chrome.scripting.executeScript({
     target: { tabId: tabId },
     func: () => document.body.innerText
   });
   if (chrome.runtime.lastError || !result) {
-    console.error('Error executing script: ', chrome.runtime.lastError);
     return '';
   }
   return result.result;
 }
 
+// Function to get the summary from OpenAI API
 async function getSummary(text, apiKey) {
   const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
@@ -96,11 +96,11 @@ async function getSummary(text, apiKey) {
     const data = await response.json();
     return data.choices[0].message.content.trim();
   } catch (error) {
-    console.error("Error fetching summary:", error);
     return `Error fetching summary. Please try again. (${error.message})`;
   }
 }
 
+// Function to get the API key from storage
 async function getApiKey() {
   return new Promise((resolve) => {
     chrome.storage.sync.get(['apiKey'], (result) => {
@@ -109,10 +109,12 @@ async function getApiKey() {
   });
 }
 
+// Function to format text into paragraphs
 function formatText(text) {
   return text.split('\n').map(line => `<p>${line}</p>`).join('');
 }
 
+// Function to save summary to history
 async function saveToHistory(summary) {
   return new Promise((resolve) => {
     chrome.storage.sync.get(['history'], (result) => {
@@ -126,6 +128,7 @@ async function saveToHistory(summary) {
   });
 }
 
+// Function to display history
 function displayHistory() {
   chrome.storage.sync.get(['history'], (result) => {
     const history = result.history || [];
@@ -151,6 +154,7 @@ function displayHistory() {
   });
 }
 
+// Function to delete an item from history
 async function deleteFromHistory(index) {
   return new Promise((resolve) => {
     chrome.storage.sync.get(['history'], (result) => {
@@ -163,6 +167,7 @@ async function deleteFromHistory(index) {
   });
 }
 
+// Function to update button text based on whether text is selected
 function updateButtonText() {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.scripting.executeScript(
@@ -172,7 +177,6 @@ function updateButtonText() {
       },
       (results) => {
         if (chrome.runtime.lastError || !results || !results[0]) {
-          console.error('Error executing script: ', chrome.runtime.lastError);
           document.getElementById('summarize-btn').innerText = 'Summarize Page';
           document.getElementById('preview-btn').innerText = 'Preview Page';
           return;
@@ -186,6 +190,7 @@ function updateButtonText() {
   });
 }
 
+// Event listener for DOM content loaded
 document.addEventListener('DOMContentLoaded', () => {
   displayHistory();
   updateButtonText();
