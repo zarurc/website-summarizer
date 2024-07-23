@@ -3,37 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="popup.css">
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    #content {
-      text-align: center;
-      width: 300px;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    input {
-      width: calc(100% - 22px);
-      padding: 5px;
-      margin-bottom: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="settings.css">
   <title>Settings</title>
 </head>
 <body>
   <div id="content">
-    <h1>Settings</h1>
-    <label for="apiKey">OpenAI API Key:</label>
-    <input type="text" id="apiKey" placeholder="Enter your API key">
-    <button id="save-btn">Save</button>
+    <h1>API Keys</h1>
+    <p id="instructions">You can add and manage your API keys here.</p>
+    <table id="api-keys-table" class="hidden">
+      <thead>
+        <tr>
+          <th>Actions</th>
+          <th>Secret Key</th>
+          <th>Created</th>
+        </tr>
+      </thead>
+      <tbody id="api-keys-body">
+        <!-- API key rows will be dynamically inserted here -->
+      </tbody>
+    </table>
+    <button id="new-api-key-btn">Add API key</button>
   </div>
+
+  <!-- Modal for adding/replacing API key -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Add API Key</h2>
+      <label for="new-api-key">Enter API key:</label>
+      <input type="text" id="new-api-key">
+      <button id="save-api-key-btn">Save</button>
+    </div>
+  </div>
+
   <script src="settings.js"></script>
 </body>
 </html>

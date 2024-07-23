@@ -1,6 +1,6 @@
 document.getElementById('summarize-btn').addEventListener('click', async () => {
-  const apiKey = await getApiKey();
-  if (!apiKey) {
+  const apiKeyObj = await getApiKey();
+  if (!apiKeyObj || !apiKeyObj.fullKey) {
     document.getElementById('summary').innerText = 'Error: API Key not found. Please set it in the settings.';
     return;
   }
@@ -19,7 +19,7 @@ document.getElementById('summarize-btn').addEventListener('click', async () => {
 
         const selectedText = results[0].result;
         const textToSummarize = selectedText || await getFullPageContent(tabs[0].id);
-        const summary = await getSummary(textToSummarize, apiKey);
+        const summary = await getSummary(textToSummarize, apiKeyObj.fullKey);
         document.getElementById('summary').innerHTML = formatText(summary);
         await saveToHistory(summary);
         displayHistory();
