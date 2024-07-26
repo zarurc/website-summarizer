@@ -11,6 +11,10 @@ Website Summarizer is a minimalist Chrome extension that allows users to summari
 - **Dynamic Buttons**: Buttons update based on whether text is selected or not.
 - **Settings Page**: Easy management of OpenAI API key through a user-friendly settings page.
 
+## Prerequisites
+
+To use this extension, you need a ChatGPT API key from OpenAI.
+
 ## Installation
 
 1. **Clone the repository**:
@@ -24,12 +28,44 @@ Website Summarizer is a minimalist Chrome extension that allows users to summari
     - Enable "Developer mode" using the toggle in the top right corner.
     - Click "Load unpacked" and select the directory where you cloned the repository.
 
+## Getting an API Key from OpenAI
+
+1. **Sign up or log in to OpenAI**:
+   - Go to the [OpenAI API page](https://beta.openai.com/signup/) and sign up for an account if you don't already have one.
+
+2. **Create a new API key**:
+   - Once you are logged in, navigate to the API keys section.
+   - Click on "Create new secret key" and give your API key a name.
+   - Copy the generated API key. You will use this key in the extension.
+
+## Adding the API Key to the Extension
+
+1. **Open the extension settings**:
+   - Click on the Website Summarizer extension icon in the Chrome toolbar.
+   - Click on the "Settings" link at the bottom of the popup.
+
+2. **Add the API key**:
+   - In the settings page, click on the "Add API key" button.
+   - Enter your API key in the input field and click "Save".
+   - Your API key will be stored securely and used for making requests to OpenAI.
+
 ## Usage
 
-1. Click on the Website Summarizer extension icon in the Chrome toolbar.
-2. Select text on a web page and click "Summarize Selected Text" or "Preview Selected Text".
-3. If no text is selected, you can summarize the entire page by clicking "Summarize Page" or preview the page content by clicking "Preview Page".
-4. Manage your API key in the settings page accessible from the extension popup.
+1. **Summarize Text**:
+   - Select text on a web page and click "Summarize Selected Text" in the extension popup.
+   - If no text is selected, click "Summarize Page" to summarize the entire page content.
+
+2. **Preview Text**:
+   - Select text on a web page and click "Preview Selected Text" in the extension popup.
+   - If no text is selected, click "Preview Page" to preview the entire page content.
+
+3. **Clear Text**:
+   - Click the "Clear Text" button to clear the summary and preview text.
+
+4. **View and Manage History**:
+   - Summaries are saved in the history section of the popup.
+   - Click on a summary to expand or collapse it.
+   - Click the delete button next to a summary to remove it from the history.
 
 ## Contributing
 
