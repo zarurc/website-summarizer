@@ -84,7 +84,7 @@ async function getSummary(text, apiKey) {
       },
       body: JSON.stringify({
         model: 'gpt-4o-mini',
-        messages: [{ role: 'user', content: `Summarize the following text:\n\n${text}` }],
+        messages: [{ role: 'user', content: `Summarize the following text in bullet points:\n\n${text}` }],
         max_tokens: 150
       })
     });
@@ -111,7 +111,8 @@ async function getApiKey() {
 
 // Function to format text into paragraphs
 function formatText(text) {
-  return text.split('\n').map(line => `<p>${line}</p>`).join('');
+  const bulletPoints = text.split('\n').map(line => `<li>${line.trim()}</li>`).join('');
+  return `<ul>${bulletPoints}</ul>`;
 }
 
 // Function to save summary to history
