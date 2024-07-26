@@ -1,0 +1,33 @@
+## Privacy Policy
+
+### Introduction
+
+Website Summarizer ("the extension") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our Chrome extension.
+
+### Information We Collect
+
+- **Website Content**: The extension processes the text content of web pages or selected text for the purpose of summarization using the OpenAI API. The processed content is not stored or shared with third parties.
+- **API Key**: The extension stores the user's OpenAI API key securely within the extension's storage to authenticate requests to the OpenAI API.
+
+### Use of Your Information
+
+We use the collected information to:
+- Summarize web page content or selected text using the OpenAI API.
+- Provide a history of summarized content for user reference.
+
+### Disclosure of Your Information
+
+We do not sell, trade, or otherwise transfer your information to outside parties. The information is used solely for the purpose of providing the extension's functionality.
+
+### Security of Your Information
+
+We implement a variety of security measures to maintain the safety of your personal information. The API key is stored securely and is only used for making authenticated requests to the OpenAI API.
+
+### Changes to This Privacy Policy
+
+We may update this Privacy Policy from time to time. Any changes will be posted on this page, and you will be notified through the extension.
+
+### Contact Us
+
+If you have any questions about this Privacy Policy, please contact us at [your-email@example.com].
+
